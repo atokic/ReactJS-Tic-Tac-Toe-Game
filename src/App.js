@@ -1,6 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import SquareComponent from "./components/SquareComponent";
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const clearState = ["", "", "", "", "", "", "", "", "", ""];
 
 function App() {
@@ -23,7 +26,9 @@ function App() {
         let winner = checkWinner();
         if (winner) {
             resetGame();
-            alert(`Game over! ${winner} won the Game !`)
+            //alert(`Game over! ${winner} won the Game !`);
+            toast.info(`Game over! ${winner} won the Game !`, {
+                position: toast.POSITION.TOP_LEFT, autoClose: 10000 });
         }
     }, [gameState])
 
@@ -67,6 +72,7 @@ function App() {
                 <SquareComponent onClick={() => onUserClicked(8)} state={gameState[8]}/>
             </div>
             <button className="clear-button" onClick={resetGame}>Reset Game</button>
+            <ToastContainer />
         </div>
     );
 }
