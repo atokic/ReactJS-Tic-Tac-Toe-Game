@@ -10,4 +10,4 @@ const SquareComponent = (props) => {
         </span>
     )
 }
-export default SquareComponent
+export default SquareComponent;
